@@ -6,11 +6,18 @@ PHP library to convert between **bmp**, **gif**, **jpeg**, **png** and **webp** 
 
 ## Usage
 
+### Syntax
+
+```php
+convertImage ( string $from , string $to , int $quality )`.
+```
+
+### Example
+
 ```php
 <?php
 include __DIR__ . '/src/php-image-converter.php';
 
-// convertImage ( string $from , string $to , int $quality )
 convertImage('./image.png', './image.webp', 5);
 ```
 
