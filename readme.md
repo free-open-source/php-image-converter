@@ -10,12 +10,12 @@ PHP library to convert **bmp**, **gif**, **jpeg**, **png** and **webp** image fi
 <?php
 include __DIR__ . '/src/php-image-converter.php';
 
-$from    = __DIR__ . '/image.png';
-$to      = __DIR__ . '/image.webp';
-$quality = 5;
-
-convertImage($from, $to, $quality);
+convertImage('./image.png', './image.webp', 5);
 ```
+
+1. `'./image.png'` is the path from where to load file.
+1. `'./image.webp'` is the path to where to save the file.
+1. `5` is the quality.
 
 ## Notes
 
