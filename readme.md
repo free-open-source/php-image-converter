@@ -2,7 +2,7 @@
 
 *Version 1.0*
 
-PHP library to convert **bmp**, **gif**, **jpeg**, **png** and **webp** image files.
+PHP library to convert between **bmp**, **gif**, **jpeg**, **png** and **webp** image files.
 
 ## Usage
 
@@ -10,12 +10,9 @@ PHP library to convert **bmp**, **gif**, **jpeg**, **png** and **webp** image fi
 <?php
 include __DIR__ . '/src/php-image-converter.php';
 
+// convertImage ( string $from , string $to , int $quality )
 convertImage('./image.png', './image.webp', 5);
 ```
-
-1. **From:** `'./image.png'` is the path from where to load file.
-1. **To:** `'./image.webp'` is the path to where to save the file.
-1. **Quality:** `5` is the quality.
 
 ## Notes
 
