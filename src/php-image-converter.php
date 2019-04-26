@@ -1,80 +1,46 @@
 <?php
 class PHPImageConverter {
-  public function convert($from, $to) {
-    $this->from = $from;
-    $this->to = $to;
+  private $whitelist = [
+    'bmp', 'gif', 'jpeg', 'png', 'webp'
+  ];
 
-    $this->getImage();
+  public function convert($from, $to, $quality = -1) {
+    $image = $this->loadImage($from);
+    if(!$image) return;
+    return $this->saveImage($to, $image, $quality);
   }
 
+  private function loadImage($from) {
+    $extension = $this->extension($from);
 
-  private function getImage() {
-    $img = null;
+    if(!in_array($extension, $this->whitelist)) return;
 
-    switch($this->extension($this->from)) {
-      case 'jpg':
-      case 'jpeg':
-        $img = imagecreatefromjpeg($this->from);
-        break;
-      case 'gif':
-        $img = imagecreatefromgif($this->from);
-        break;
-      case 'bmp':
-        $img = imagecreatefrombmp($this->from);
-        break;
-      case 'webp':
-        $img = imagecreatefromwebp($this->from);
-        break;
-    }
+    $method = 'imagecreatefrom' . $extension;
+    return $method($from);
+  }
+
+  private function saveImage($to, $image, $quality) {
+    $extension = $this->extension($to);
+
+    if(!in_array($extension, $this->whitelist)) return;
+    if(!file_exists(dirname($to))) $this->makedirs();
+
+    $method = 'image' . $extension;
+    return $method($image, $to, $quality);
   }
 
   private function extension($path) {
-    return pathinfo($path)['extension'];
+    $extension = pathinfo($path)['extension'];
+    $extension = ($extension == 'jpg') ? 'jpeg' : $extension;
+    return $extension;
+  }
+
+  private function makedirs() {
+    return mkdir(dirname($this->to), 0755);
   }
 }
 
-$from = __DIR__ . '/test.jpg';
-$to = __DIR__ . '/asda.png';
-
-$converter = new PHPImageConverter();
-$converter->convert($from, $to);
-/*
-  class ImageToWebp {
-
-    private $source = null;
-
-    protected function getImageResource () {
-
-      // Find the extension of source image.
-      $extension = strtolower( strrchr ( $this->source, '.' ) );
-
-      // Convert image to resource object according to its type.
-      switch ( $extension ) {
-        case '.jpg':
-        case '.jpeg':
-          $img = @imagecreatefromjpeg( $this->source );
-          break;
-        case '.gif':
-          $img = @imagecreatefromgif( $this->source );
-          break;
-        case '.png':
-          $img = @imagecreatefrompng( $this->source );
-          break;
-        default:
-          $img = false;
-          break;
-      }
-      return $img;
-    }
-
-    public function convert ( $source, $destination, $quality = 80 ) {
-
-      // Set default values globally
-      $this->source = $source;
-
-      // Convert to webp, yey
-      imagewebp( $this->getImageResource(), $destination, $quality );
-
-    }
-  }
-  */
+function convertImage($from, $to, $quality = -1) {
+  $converter = new PHPImageConverter();
+  return $converter->convert($from, $to, $quality);
+}
