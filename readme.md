@@ -13,9 +13,9 @@ include __DIR__ . '/src/php-image-converter.php';
 convertImage('./image.png', './image.webp', 5);
 ```
 
-1. `'./image.png'` is the path from where to load file.
-1. `'./image.webp'` is the path to where to save the file.
-1. `5` is the quality.
+1. **From:** `'./image.png'` is the path from where to load file.
+1. **To:** `'./image.webp'` is the path to where to save the file.
+1. **Quality:** `5` is the quality.
 
 ## Notes
 
