@@ -1,6 +1,6 @@
 <?php
 
-namespace Jens\ImageConverter;
+namespace ImageConverter;
 
 class ImageConverter
 {
@@ -121,4 +121,18 @@ class ImageConverter
 
         return $result;
     }
+}
+
+/**
+ * Helper function
+ *
+ * @param string $from
+ * @param string $to
+ *
+ * @return resource
+ * @throws \InvalidArgumentException
+ */
+function convert($from, $to, $quality = -1) {
+  $converter = new ImageConverter();
+  return $converter->convert($from, $to, 5);
 }
