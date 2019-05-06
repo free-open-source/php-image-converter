@@ -2,14 +2,14 @@
 
 *Version 1.1*
 
-PHP library to convert between **bmp**, **gif**, **jpeg**, **png** and **webp** image files.
+PHP library to convert between **gif**, **jpeg**, **png** and **webp** image files.
 
 ## Usage
 
 ### Syntax
 
 ```php
-convertImage ( string $from , string $to , int $quality )`.
+echo \ImageConverter\convert(string $from , string $to , int $quality);
 ```
 
 ### Example
@@ -18,7 +18,10 @@ convertImage ( string $from , string $to , int $quality )`.
 <?php
 include __DIR__ . '/src/php-image-converter.php';
 
-convertImage('./image.png', './image.webp', 5);
+$from = __DIR__ . '/my-image.png';
+$to = __DIR__ . '/my-image.webp';
+
+echo \ImageConverter\convert($from, $to);
 ```
 
 ## Notes
@@ -29,6 +32,11 @@ If you try to convert to a path that has not been created, it will try to create
 
 - PHP 7+
 - GD (active on almost every server by default)
+
+## Contributors
+
+- [@peter279k](https://github.com/peter279k)
+- [@jenstornell](https://github.com/jenstornell)
 
 ## Inspiration
 
