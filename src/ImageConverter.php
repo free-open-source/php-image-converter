@@ -48,9 +48,23 @@ class ImageConverter
             throw new \InvalidArgumentException(sprintf('The %s extension is unsupported', $extension));
         }
 
-        $method = 'imagecreatefrom' . $this->constImageFormat[$extension];
+        $format = $this->constImageFormat[$extension];
 
-        return $method($from);
+        switch ($format) {
+            case 'jpg':
+            case 'jpeg':
+                $image = imagecreatefromjpeg($from);
+                break;
+            case 'gif':
+                $image = imagecreatefromgif($from);
+                break;
+            case 'png':
+                $image = imagecreatefrompng($from);
+                break;
+            default:
+                $image = null;
+        }
+        return $image;
     }
 
     private function saveImage($to, $image, $quality)
@@ -68,9 +82,25 @@ class ImageConverter
             $this->makeDirectory($to);
         }
 
-        $method = 'image' . $extension;
+        switch ($extension) {
+          case 'jpg':
+          case 'jpeg':
+              $image = imagejpeg($image, $to, $quality);
+              break;
+          case 'gif':
+              $image = imagegif($image, $to, $quality);
+              break;
+          case 'png':
+              $image = imagepng($image, $to, $quality);
+              break;
+          case 'webp':
+              $image = imagewebp($image, $to, $quality);
+              break;
+          default:
+              $image = null;
+        }
 
-        return $method($image, $to, $quality);
+        return $image;
     }
 
     /**
