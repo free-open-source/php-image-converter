@@ -51,15 +51,18 @@ class ImageConverter
         $format = $this->constImageFormat[$extension];
 
         switch ($format) {
+            case 'gif':
+                $image = imagecreatefromgif($from);
+                break;
             case 'jpg':
             case 'jpeg':
                 $image = imagecreatefromjpeg($from);
                 break;
-            case 'gif':
-                $image = imagecreatefromgif($from);
-                break;
             case 'png':
                 $image = imagecreatefrompng($from);
+                break;
+            case 'webp':
+                $image = imagecreatefromwebp($from);
                 break;
             default:
                 $image = null;
@@ -83,13 +86,13 @@ class ImageConverter
         }
 
         switch ($extension) {
-          case 'jpg':
-          case 'jpeg':
-              $image = imagejpeg($image, $to, $quality);
-              break;
           case 'gif':
               $image = imagegif($image, $to, $quality);
               break;
+          case 'jpg':
+          case 'jpeg':
+              $image = imagejpeg($image, $to, $quality);
+              break;          
           case 'png':
               $image = imagepng($image, $to, $quality);
               break;
