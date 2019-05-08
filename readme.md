@@ -28,12 +28,12 @@ echo \ImageConverter\convert($from, $to);
 
 The third argument is an optional `$quality` value. It will differ depending on your image format.
 
-| Format | Default | Min    | Max    | Description                 |
-| ------ | ------- | ------ | ------ | --------------------------- |
-| gif    | `null`  | `null` | `null` | Quality value not supported |
-| jpg    | `-1`    | `0`    | `100`  | Higher means better quality |
-| png    | `-1`    | `0`    | `9`    | Lower means better quality  |
-| webp   | `80`    | `0`    | `100`  | Higher means better quality |
+| Format                                                       | Default | Min    | Max    | Description                 |
+| ------------------------------------------------------------ | ------- | ------ | ------ | --------------------------- |
+| [gif](https://www.php.net/manual/en/function.imagegif.php)   | `null`  | `null` | `null` | Quality value not supported |
+| [jpeg](https://www.php.net/manual/en/function.imagejpeg.php) | `-1`    | `0`    | `100`  | Higher means better quality |
+| [png](https://www.php.net/manual/en/function.imagepng.php)   | `-1`    | `0`    | `9`    | Lower means better quality  |
+| [webp](https://www.php.net/manual/en/function.imagewebp.php) | `80`    | `0`    | `100`  | Higher means better quality |
 
 ## Notes
 
