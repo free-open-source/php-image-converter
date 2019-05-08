@@ -24,6 +24,17 @@ $to = __DIR__ . '/my-image.webp';
 echo \ImageConverter\convert($from, $to);
 ```
 
+## Quality
+
+The third argument is an optional `$quality` value. It will differ depending on your image format.
+
+| Format | Default | Min    | Max    | Description                 |
+| ------ | ------- | ------ | ------ | --------------------------- |
+| gif    | `null`  | `null` | `null` | Quality value not supported |
+| jpg    | `-1`    | `0`    | `100`  | Higher means better quality |
+| png    | `-1`    | `0`    | `9`    | Lower means better quality  |
+| webp   | `80`    | `0`    | `100`  | Higher means better quality |
+
 ## Notes
 
 If you try to convert to a path that has not been created, it will try to create it automatically.
