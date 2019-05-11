@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2 beta
+
+- Added exceptions for quality out of range
+- Removed quality argument from gif conversion
+
 ## 1.1
 
 - Changed namespace from `Jens\ImageConverter` to `ImageConverter`

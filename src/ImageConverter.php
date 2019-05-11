@@ -87,16 +87,25 @@ class ImageConverter
 
         switch ($extension) {
           case 'gif':
-              $image = imagegif($image, $to, $quality);
+              $image = imagegif($image, $to);
               break;
           case 'jpg':
           case 'jpeg':
+              if (isset($quality) && ($quality < -1 && $quality > 100)) {
+                  throw new \InvalidArgumentException(sprintf('The %s quality is out of range', $quality));
+              }
               $image = imagejpeg($image, $to, $quality);
               break;          
           case 'png':
+              if (isset($quality) && ($quality < -1 && $quality > 9)) {
+                  throw new \InvalidArgumentException(sprintf('The %s quality is out of range', $quality));
+              }
               $image = imagepng($image, $to, $quality);
               break;
           case 'webp':
+              if (isset($quality) && ($quality < 0 || $quality > 100)) {
+                  throw new \InvalidArgumentException(sprintf('The %s quality is out of range', $quality));
+              }
               $image = imagewebp($image, $to, $quality);
               break;
           default:
@@ -167,5 +176,5 @@ class ImageConverter
  */
 function convert($from, $to, $quality = -1) {
   $converter = new ImageConverter();
-  return $converter->convert($from, $to, 5);
+  return $converter->convert($from, $to, $quality);
 }

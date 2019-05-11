@@ -1,6 +1,6 @@
 # PHP Image Converter
 
-*Version 1.1 beta*
+*Version 1.2 beta*
 
 PHP library to convert between **gif**, **jpeg**, **png** and **webp** image files.
 
