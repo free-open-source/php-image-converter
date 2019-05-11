@@ -30,7 +30,7 @@ class ImageConverter
      * @return resource
      * @throws \InvalidArgumentException
      */
-    public function convert($from, $to, $quality = -1)
+    public function convert($from, $to, $quality = null)
     {
         $image = $this->loadImage($from);
         if (!$image) {
@@ -174,7 +174,7 @@ class ImageConverter
  * @return resource
  * @throws \InvalidArgumentException
  */
-function convert($from, $to, $quality = -1) {
+function convert($from, $to, $quality = null) {
   $converter = new ImageConverter();
   return $converter->convert($from, $to, $quality);
 }
