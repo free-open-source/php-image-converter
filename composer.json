@@ -16,12 +16,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Jens\\ImageConverter\\": "src/"
-        }
+            "ImageConverter\\": "src/"
+        },
+        "files": ["src/helper.php"]
     },
     "autoload-dev": {
         "psr-4": {
-            "Jens\\ImageConverter\\Tests\\": "test/"
+            "ImageConverter\\Tests\\": "test/"
         }
     },
     "require-dev": {
