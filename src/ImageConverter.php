@@ -91,19 +91,19 @@ class ImageConverter
               break;
           case 'jpg':
           case 'jpeg':
-              if (isset($quality) && ($quality < -1 && $quality > 100)) {
+              if ($quality < -1 && $quality > 100) {
                   throw new \InvalidArgumentException(sprintf('The %s quality is out of range', $quality));
               }
               $image = imagejpeg($image, $to, $quality);
               break;          
           case 'png':
-              if (isset($quality) && ($quality < -1 && $quality > 9)) {
+              if ($quality < -1 && $quality > 9) {
                   throw new \InvalidArgumentException(sprintf('The %s quality is out of range', $quality));
               }
               $image = imagepng($image, $to, $quality);
               break;
           case 'webp':
-              if (isset($quality) && ($quality < 0 || $quality > 100)) {
+              if ($quality < 0 || $quality > 100) {
                   throw new \InvalidArgumentException(sprintf('The %s quality is out of range', $quality));
               }
               $image = imagewebp($image, $to, $quality);
