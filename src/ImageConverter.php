@@ -85,6 +85,11 @@ class ImageConverter
             $this->makeDirectory($to);
         }
 
+
+        if(isset($quality) && !is_int($quality)) {
+          throw new \InvalidArgumentException(sprintf('The %s quality has to be an integer', $quality));
+        }
+
         switch ($extension) {
           case 'gif':
               $image = imagegif($image, $to);
