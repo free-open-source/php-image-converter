@@ -5,21 +5,20 @@ namespace ImageConverter;
 class ImageConverter
 {
     /** @var array */
-    private $imageFormat = [
-        'gif',
-        'jpeg',
-        'jpg',
-        'png',
-        'webp',
-    ];
+    private $imageFormat = [];
 
     /** @var array */
     private $constImageFormat = [
-        IMAGETYPE_GIF => 'gif',
+        IMAGETYPE_GIF  => 'gif',
         IMAGETYPE_JPEG => 'jpeg',
-        IMAGETYPE_PNG => 'png',
+        IMAGETYPE_PNG  => 'png',
         IMAGETYPE_WEBP => 'webp',
     ];
+
+    public function __construct()
+    {
+      $this->imageFormat = array_values($this->constImageFormat);
+    }
 
     /**
      * Do image conversion work
