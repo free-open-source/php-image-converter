@@ -49,6 +49,10 @@ If you try to convert to a path that has not been created, it will try to create
 - [@peter279k](https://github.com/peter279k)
 - [@jenstornell](https://github.com/jenstornell)
 
+## Contributing
+
+Please see [contributing](contributing.md) for details.
+
 ## Inspiration
 
 - https://github.com/rakibtg/PHP-ImageToWebp
