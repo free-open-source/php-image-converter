@@ -86,8 +86,8 @@ class ImageConverter
         }
 
 
-        if(isset($quality) && !is_int($quality)) {
-          throw new \InvalidArgumentException(sprintf('The %s quality has to be an integer', $quality));
+        if (isset($quality) && !is_int($quality)) {
+            throw new \InvalidArgumentException(sprintf('The %s quality has to be an integer', $quality));
         }
 
         switch ($extension) {
@@ -100,7 +100,7 @@ class ImageConverter
                   throw new \InvalidArgumentException(sprintf('The %s quality is out of range', $quality));
               }
               $image = imagejpeg($image, $to, $quality);
-              break;          
+              break;
           case 'png':
               if ($quality < -1 && $quality > 9) {
                   throw new \InvalidArgumentException(sprintf('The %s quality is out of range', $quality));
@@ -168,18 +168,4 @@ class ImageConverter
 
         return $result;
     }
-}
-
-/**
- * Helper function
- *
- * @param string $from
- * @param string $to
- *
- * @return resource
- * @throws \InvalidArgumentException
- */
-function convert($from, $to, $quality = null) {
-  $converter = new ImageConverter();
-  return $converter->convert($from, $to, $quality);
 }

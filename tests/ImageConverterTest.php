@@ -1,8 +1,8 @@
 <?php
 
-namespace Jens\ImageConverter\Tests;
+namespace ImageConverter\Tests;
 
-use Jens\ImageConverter\ImageConverter;
+use ImageConverter\ImageConverter;
 use PHPUnit\Framework\TestCase;
 
 class ImageConverterTest extends TestCase
